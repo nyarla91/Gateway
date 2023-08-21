@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Gameplay.Entity.Player
 {
-    public class PlayerMovement : Transformable
+    public class PlayerMovement : Transformable, IPlayerTransformService
     {
         private const string RegularState = "Regular";
         

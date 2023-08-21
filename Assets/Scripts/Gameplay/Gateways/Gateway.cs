@@ -16,7 +16,7 @@ namespace Gameplay.Gateways
         private void TeleportHere(Transform target)
         {
             StartCoroutine(StartCooldown());
-            target.position = _center.position;
+            target.position = _center.position - new Vector3(0, 0.5f, 0);
         }
 
         private IEnumerator StartCooldown()

@@ -10,9 +10,9 @@ namespace Extentions
             return instance;
         }
         
-        protected GameObject BindFromPrefab<T>(GameObject prefab)
+        protected GameObject BindFromPrefab<T>(GameObject prefab, Transform parent = null)
         {
-            GameObject instance = Container.InstantiatePrefab(prefab, transform);
+            GameObject instance = Container.InstantiatePrefab(prefab, parent ?? transform);
             BindFromInstance<T>(instance);
             return instance;
         }

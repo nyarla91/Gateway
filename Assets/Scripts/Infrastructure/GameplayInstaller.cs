@@ -1,6 +1,7 @@
 ﻿using Gameplay.Entity.Player;
 using UnityEngine;
 using Zenject;
+using MonoInstaller = Extentions.MonoInstaller;
 
 namespace Infrastructure
 {
@@ -12,7 +13,8 @@ namespace Infrastructure
         public override void InstallBindings()
         {
             Container.Bind<GameplayActions>().AsSingle();
-            Container.InstantiatePrefab(_playerPrefab, _playerSpawnPoint);
+            GameObject player = BindFromPrefab<IPlayerTransformService>(_playerPrefab, _playerSpawnPoint);
+            BindFromInstance<IPlayerCameraService>(player);
         }
     }
 }

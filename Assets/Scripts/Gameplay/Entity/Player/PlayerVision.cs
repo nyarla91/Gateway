@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Gameplay.Entity.Player
 {
-    public class PlayerVision : Transformable
+    public class PlayerVision : Transformable, IPlayerCameraService
     {
         [SerializeField] private Camera _camera;
         [SerializeField] private float _turnAroundSpeed;
