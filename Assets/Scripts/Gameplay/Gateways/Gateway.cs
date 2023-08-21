@@ -7,12 +7,18 @@ namespace Gameplay.Gateways
 {
     public class Gateway : Transformable
     {
-        [SerializeField] private Transform _center;
-        [SerializeField] private float _framesCooldown;
         [SerializeField] private Gateway _destination;
+        [SerializeField] private float _framesCooldown;
+        [SerializeField] private Transform _center;
 
         private bool _ready = true;
 
+        public void Bind(Gateway other)
+        {
+            _destination = other;
+            other._destination = this;
+        }
+        
         private void TeleportHere(Transform target)
         {
             StartCoroutine(StartCooldown());
@@ -31,7 +37,7 @@ namespace Gameplay.Gateways
         
         private void OnTriggerEnter(Collider other)
         {
-            if ( ! _ready || ! other.TryGetComponent(out PlayerMovement playerMovement))
+            if (_destination == null || ! _destination.gameObject.activeSelf || ! _ready || ! other.TryGetComponent(out PlayerMovement playerMovement))
                 return;
             Transform target = playerMovement.Transform;
             _destination.TeleportHere(target);

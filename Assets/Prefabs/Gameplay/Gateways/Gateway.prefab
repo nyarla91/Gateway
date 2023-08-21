@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3843369987233705338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -94,9 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef6005e3ca4ebca051c565acc7bc29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _center: {fileID: 386238381002557903}
-  _framesCooldown: 5
   _destination: {fileID: 0}
+  _framesCooldown: 5
+  _center: {fileID: 386238381002557903}
 --- !u!135 &4030143948565270414
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6868803937901691893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -170,7 +170,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 90
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -337,15 +337,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
       propertyPath: m_LocalScale.x
-      value: 50
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
       propertyPath: m_LocalScale.y
-      value: 50
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
       propertyPath: m_LocalScale.z
-      value: 50
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
       propertyPath: m_LocalPosition.x
@@ -357,23 +357,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.41
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.85491186
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.51877326
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -406,21 +406,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
   m_PrefabInstance: {fileID: 8302343148721237169}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9220751671987032544 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fdcbf551b1415ff4ba2044d2fee83691, type: 3}
-  m_PrefabInstance: {fileID: 8302343148721237169}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1743461404215664029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9220751671987032544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d60b52e667d44863a1a15a0380cf087e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _invert: 0

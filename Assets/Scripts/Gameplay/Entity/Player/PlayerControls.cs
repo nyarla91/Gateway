@@ -1,4 +1,5 @@
-﻿using Extentions;
+﻿using System;
+using Extentions;
 using Extentions.Pause;
 using Input;
 using Settings;
@@ -99,7 +100,7 @@ namespace Gameplay.Entity.Player
         }
 
         public event Action JumpPressed;
-        public event Action RopePressed;
+        public event Action<int> GatewayPressed;
         
         [Inject] private DeviceWatcher DeviceWatcher { get; set; }
         [Inject] private IPauseReadService Pause { get; set; }
@@ -111,7 +112,8 @@ namespace Gameplay.Entity.Player
             _actions.Enable();
             
             _actions.Player.Jump.started += PressJump;
-            _actions.Player.Rope.performed += PressRope;
+            _actions.Player.Gateway1.performed += PressGateway1;
+            _actions.Player.Gateway2.performed += PressGateway2;
 
             Config = settings.Config;
         }
@@ -123,17 +125,25 @@ namespace Gameplay.Entity.Player
             JumpPressed?.Invoke();
         }
 
-        private void PressRope(InputAction.CallbackContext _)
+        private void PressGateway1(InputAction.CallbackContext _)
         {
             if (Pause.IsPaused)
                 return;
-            RopePressed?.Invoke();
+            GatewayPressed?.Invoke(0);
+        }
+        
+        private void PressGateway2(InputAction.CallbackContext _)
+        {
+            if (Pause.IsPaused)
+                return;
+            GatewayPressed?.Invoke(1);
         }
 
         private void OnDestroy()
         {
             _actions.Player.Jump.started -= PressJump;
-            _actions.Player.Rope.started -= PressRope;
+            _actions.Player.Gateway1.performed -= PressGateway1;
+            _actions.Player.Gateway2.performed -= PressGateway2;
         }
         
         private Vector2 GetScreenGyroDelta(bool worldSpace)

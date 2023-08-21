@@ -33,18 +33,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rope",
+                    "name": "Gateway1",
                     "type": "Button",
-                    "id": "2abb2912-464b-40bd-abbb-a74661d89118",
+                    "id": "4075ab1a-dee5-44ec-b06b-c716b129a261",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "New action",
+                    "name": "Gateway2",
                     "type": "Button",
-                    "id": "5be779cd-fc67-4693-979f-4d8155d85541",
+                    "id": "e0ec05b9-6b8c-44aa-9c2d-50cb33db87f6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -164,34 +164,45 @@
                 },
                 {
                     "name": "",
-                    "id": "4490d05f-6b26-45b5-9f6a-e70b0f02f655",
+                    "id": "b6606fc4-80ff-4e08-a2ba-0dbfd4fabc51",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rope",
+                    "action": "Gateway1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "84e31f2d-90a5-4978-8e6e-a24d2bd7192b",
+                    "id": "2e3cabcd-7853-493e-a79e-974b5a134083",
                     "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "AxisDeadzone(min=0.5)",
-                    "groups": "",
-                    "action": "Rope",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bc7014bd-3497-4331-b8d7-c6fae20939d1",
-                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Gateway1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2cdc1f27-00aa-471d-94d4-6138dbd78797",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gateway2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "798aeca8-6bfc-42c9-b20d-14df90a4f188",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gateway2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

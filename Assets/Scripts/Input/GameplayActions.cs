@@ -55,18 +55,18 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Rope"",
+                    ""name"": ""Gateway1"",
                     ""type"": ""Button"",
-                    ""id"": ""2abb2912-464b-40bd-abbb-a74661d89118"",
+                    ""id"": ""4075ab1a-dee5-44ec-b06b-c716b129a261"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Gateway2"",
                     ""type"": ""Button"",
-                    ""id"": ""5be779cd-fc67-4693-979f-4d8155d85541"",
+                    ""id"": ""e0ec05b9-6b8c-44aa-9c2d-50cb33db87f6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -186,34 +186,45 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4490d05f-6b26-45b5-9f6a-e70b0f02f655"",
+                    ""id"": ""b6606fc4-80ff-4e08-a2ba-0dbfd4fabc51"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rope"",
+                    ""action"": ""Gateway1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""84e31f2d-90a5-4978-8e6e-a24d2bd7192b"",
+                    ""id"": ""2e3cabcd-7853-493e-a79e-974b5a134083"",
                     ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": ""AxisDeadzone(min=0.5)"",
-                    ""groups"": """",
-                    ""action"": ""Rope"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bc7014bd-3497-4331-b8d7-c6fae20939d1"",
-                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Gateway1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2cdc1f27-00aa-471d-94d4-6138dbd78797"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gateway2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""798aeca8-6bfc-42c9-b20d-14df90a4f188"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gateway2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -255,8 +266,8 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Camera = m_Player.FindAction("Camera", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Rope = m_Player.FindAction("Rope", throwIfNotFound: true);
-        m_Player_Newaction = m_Player.FindAction("New action", throwIfNotFound: true);
+        m_Player_Gateway1 = m_Player.FindAction("Gateway1", throwIfNotFound: true);
+        m_Player_Gateway2 = m_Player.FindAction("Gateway2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -319,8 +330,8 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Camera;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Rope;
-    private readonly InputAction m_Player_Newaction;
+    private readonly InputAction m_Player_Gateway1;
+    private readonly InputAction m_Player_Gateway2;
     public struct PlayerActions
     {
         private @GameplayActions m_Wrapper;
@@ -328,8 +339,8 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Camera => m_Wrapper.m_Player_Camera;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Rope => m_Wrapper.m_Player_Rope;
-        public InputAction @Newaction => m_Wrapper.m_Player_Newaction;
+        public InputAction @Gateway1 => m_Wrapper.m_Player_Gateway1;
+        public InputAction @Gateway2 => m_Wrapper.m_Player_Gateway2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -348,12 +359,12 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Rope.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRope;
-                @Rope.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRope;
-                @Rope.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRope;
-                @Newaction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNewaction;
+                @Gateway1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGateway1;
+                @Gateway1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGateway1;
+                @Gateway1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGateway1;
+                @Gateway2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGateway2;
+                @Gateway2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGateway2;
+                @Gateway2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGateway2;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -367,12 +378,12 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Rope.started += instance.OnRope;
-                @Rope.performed += instance.OnRope;
-                @Rope.canceled += instance.OnRope;
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Gateway1.started += instance.OnGateway1;
+                @Gateway1.performed += instance.OnGateway1;
+                @Gateway1.canceled += instance.OnGateway1;
+                @Gateway2.started += instance.OnGateway2;
+                @Gateway2.performed += instance.OnGateway2;
+                @Gateway2.canceled += instance.OnGateway2;
             }
         }
     }
@@ -400,7 +411,7 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnRope(InputAction.CallbackContext context);
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnGateway1(InputAction.CallbackContext context);
+        void OnGateway2(InputAction.CallbackContext context);
     }
 }

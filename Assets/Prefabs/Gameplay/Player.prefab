@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 7675155791870136618}
   - component: {fileID: 7675155791870136620}
   - component: {fileID: 4768412477177399301}
+  - component: {fileID: 6190448241517305801}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -331,6 +332,7 @@ MonoBehaviour:
   _controls: {fileID: 7675155791870136614}
   _movement: {fileID: 7675155791870136618}
   _vision: {fileID: 7675155791870136620}
+  _gloves: {fileID: 6190448241517305801}
 --- !u!114 &7675155791870136614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,3 +483,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65109f89048440dba2f3cb26b8e7856c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6190448241517305801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675155791870136621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8736b6079ca24d61af51d36d89d152bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gatewaysPrefabs:
+  - {fileID: 8809928281100068211, guid: d3079178f9e5e1a41b72f5658ca82a6c, type: 3}
+  - {fileID: 8809928281100068211, guid: 4bb6068f8d17acc4c8bc7391277e50bc, type: 3}
