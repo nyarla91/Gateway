@@ -3,9 +3,9 @@ using System.Linq;
 using Extentions;
 using UnityEngine;
 
-namespace Gameplay.Entity.Player
+namespace Gameplay.Player
 {
-    public class PlayerCollision : MonoBehaviour
+    public class PlayerCollision : Transformable
     {
         private List<Collision> _currentCollisions = new List<Collision>();
 
@@ -15,11 +15,6 @@ namespace Gameplay.Entity.Player
 
         public float SlopeAngle { get; private set; }
         public bool DoesCollide { get; private set; }
-
-        private void Update()
-        {
-            print(SlopeAngle);
-        }
 
         private void FixedUpdate()
         {
@@ -36,7 +31,17 @@ namespace Gameplay.Entity.Player
             _currentCollisions = new List<Collision>();
         }
 
-        public void OnCollisionStay(Collision other)
+        private void OnCollisionEnter(Collision other)
+        {
+            Transform.parent = other.transform;
+        }
+
+        private void OnCollisionExit(Collision other)
+        {
+            Transform.parent = null;
+        }
+
+        private void OnCollisionStay(Collision other)
         {
             print(other.gameObject);
             _currentCollisions.Add(other);

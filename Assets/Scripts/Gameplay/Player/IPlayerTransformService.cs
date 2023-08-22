@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Gameplay.Entity.Player
+namespace Gameplay.Player
 {
     public interface IPlayerTransformService
     {

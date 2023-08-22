@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 using Zenject;
 using Action = System.Action;
 
-namespace Gameplay.Entity.Player
+namespace Gameplay.Player
 {
     public class PlayerControls : MonoBehaviour
     {

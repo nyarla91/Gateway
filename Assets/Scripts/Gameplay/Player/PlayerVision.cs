@@ -5,7 +5,7 @@ using Extentions.Pause;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay.Entity.Player
+namespace Gameplay.Player
 {
     public class PlayerVision : Transformable, IPlayerCameraService
     {
@@ -21,7 +21,7 @@ namespace Gameplay.Entity.Player
         
         public Camera Camera => _camera;
         public Transform CameraTransform => _cameraTransform;
-
+        
         public Ray LookRay => new Ray(CameraTransform.position, CameraTransform.forward);
 
         public event Func<Vector2> CameraRotationBind;

@@ -1,11 +1,12 @@
 ﻿using System;
 using Extentions;
 using Extentions.Pause;
+using Gameplay.Entity;
 using Input;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay.Entity.Player
+namespace Gameplay.Player
 {
     public class PlayerMovement : Transformable, IPlayerTransformService
     {

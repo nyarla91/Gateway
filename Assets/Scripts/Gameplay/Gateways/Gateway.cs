@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using Extentions;
-using Gameplay.Entity.Player;
+using Gameplay.Player;
 using UnityEngine;
 
 namespace Gameplay.Gateways
 {
-    public class Gateway : Transformable
+    public class Gateway : Transformable, IInteractable
     {
         [SerializeField] private Gateway _destination;
         [SerializeField] private float _framesCooldown;
@@ -13,12 +13,14 @@ namespace Gameplay.Gateways
 
         private bool _ready = true;
 
+        public Transform ButtonOrigin => _center;
+
         public void Bind(Gateway other)
         {
             _destination = other;
             other._destination = this;
         }
-        
+
         private void TeleportHere(Transform target)
         {
             StartCoroutine(StartCooldown());
@@ -34,13 +36,18 @@ namespace Gameplay.Gateways
             }
             _ready = true;
         }
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (_destination == null || ! _destination.gameObject.activeSelf || ! _ready || ! other.TryGetComponent(out PlayerMovement playerMovement))
                 return;
             Transform target = playerMovement.Transform;
             _destination.TeleportHere(target);
+        }
+
+        public void Interact()
+        {
+            print(gameObject);
         }
     }
 }

@@ -4,7 +4,7 @@ using Gameplay.Gateways;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay.Entity.Player
+namespace Gameplay.Player
 {
     public class PlayerGloves : MonoBehaviour
     {
