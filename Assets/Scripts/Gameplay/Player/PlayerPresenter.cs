@@ -17,6 +17,7 @@ namespace Gameplay.Player
         private void Awake()
         {
             _controls.JumpPressed += _movement.TryJump;
+            _controls.InteractPressed += _interaction.TryInteract;
             _controls.GatewayPressed += _gloves.OpenGateway;
             _movement.MovementInputBind += () => _controls.MovementDelta;
             _vision.CameraRotationBind += () => _controls.CameraDelta;

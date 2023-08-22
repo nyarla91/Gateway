@@ -100,6 +100,7 @@ namespace Gameplay.Player
         }
 
         public event Action JumpPressed;
+        public event Action InteractPressed;
         public event Action<int> GatewayPressed;
         
         [Inject] private DeviceWatcher DeviceWatcher { get; set; }
@@ -111,7 +112,8 @@ namespace Gameplay.Player
             _actions = actions;
             _actions.Enable();
             
-            _actions.Player.Jump.started += PressJump;
+            _actions.Player.Jump.performed += PressJump;
+            _actions.Player.Interact.performed += PressInteract;
             _actions.Player.Gateway1.performed += PressGateway1;
             _actions.Player.Gateway2.performed += PressGateway2;
 
@@ -123,6 +125,13 @@ namespace Gameplay.Player
             if (Pause.IsPaused)
                 return;
             JumpPressed?.Invoke();
+        }
+
+        private void PressInteract(InputAction.CallbackContext _)
+        {
+            if (Pause.IsPaused)
+                return;
+            InteractPressed?.Invoke();
         }
 
         private void PressGateway1(InputAction.CallbackContext _)
@@ -142,6 +151,7 @@ namespace Gameplay.Player
         private void OnDestroy()
         {
             _actions.Player.Jump.started -= PressJump;
+            _actions.Player.Interact.performed -= PressInteract;
             _actions.Player.Gateway1.performed -= PressGateway1;
             _actions.Player.Gateway2.performed -= PressGateway2;
         }

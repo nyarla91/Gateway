@@ -12,6 +12,11 @@ namespace Gameplay.Player
         public PlayerVision Vision => _vision ??= GetComponent<PlayerVision>();
         
         public IInteractable Target { get; private set; }
+
+        public void TryInteract()
+        {
+            Target?.Interact();
+        }
         
         private void FixedUpdate()
         {

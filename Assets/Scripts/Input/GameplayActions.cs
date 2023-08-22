@@ -71,6 +71,15 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb4213e4-3c04-4cce-bd9a-009454517935"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -238,6 +247,39 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
                     ""action"": ""Gateway2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11d59672-9f08-4d2e-a9df-ec29f5bd6881"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8caf4a4-c69e-45af-839d-0fd67ec3c715"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4a41d5c-b74d-4ef7-bd12-fe80fb3a3816"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -279,6 +321,7 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Gateway1 = m_Player.FindAction("Gateway1", throwIfNotFound: true);
         m_Player_Gateway2 = m_Player.FindAction("Gateway2", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -343,6 +386,7 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Gateway1;
     private readonly InputAction m_Player_Gateway2;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @GameplayActions m_Wrapper;
@@ -352,6 +396,7 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Gateway1 => m_Wrapper.m_Player_Gateway1;
         public InputAction @Gateway2 => m_Wrapper.m_Player_Gateway2;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -376,6 +421,9 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
                 @Gateway2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGateway2;
                 @Gateway2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGateway2;
                 @Gateway2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGateway2;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -395,6 +443,9 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
                 @Gateway2.started += instance.OnGateway2;
                 @Gateway2.performed += instance.OnGateway2;
                 @Gateway2.canceled += instance.OnGateway2;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -424,5 +475,6 @@ public partial class @GameplayActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnGateway1(InputAction.CallbackContext context);
         void OnGateway2(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

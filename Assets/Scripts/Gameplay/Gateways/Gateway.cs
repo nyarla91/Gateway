@@ -5,15 +5,13 @@ using UnityEngine;
 
 namespace Gameplay.Gateways
 {
-    public class Gateway : Transformable, IInteractable
+    public class Gateway : Transformable
     {
         [SerializeField] private Gateway _destination;
         [SerializeField] private float _framesCooldown;
         [SerializeField] private Transform _center;
 
         private bool _ready = true;
-
-        public Transform ButtonOrigin => _center;
 
         public void Bind(Gateway other)
         {
@@ -43,11 +41,6 @@ namespace Gameplay.Gateways
                 return;
             Transform target = playerMovement.Transform;
             _destination.TeleportHere(target);
-        }
-
-        public void Interact()
-        {
-            print(gameObject);
         }
     }
 }
