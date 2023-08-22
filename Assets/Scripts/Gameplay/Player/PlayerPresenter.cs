@@ -18,7 +18,7 @@ namespace Gameplay.Player
         {
             _controls.JumpPressed += _movement.TryJump;
             _controls.InteractPressed += _interaction.TryInteract;
-            _controls.GatewayPressed += _gloves.OpenGateway;
+            _controls.GatewayPressed += _gloves.TryOpenGateway;
             _movement.MovementInputBind += () => _controls.MovementDelta;
             _vision.CameraRotationBind += () => _controls.CameraDelta;
             InteractablePrompt.TargetBind += () => _interaction.Target;

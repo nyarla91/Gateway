@@ -98306,6 +98306,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556961737}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1558137634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558137636}
+  - component: {fileID: 1558137635}
+  m_Layer: 0
+  m_Name: GatewaySystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1558137635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558137634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c005368ffc486eb6072b3278a13622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gatewaysPrefabs:
+  - {fileID: 8809928281100068211, guid: d3079178f9e5e1a41b72f5658ca82a6c, type: 3}
+  - {fileID: 8809928281100068211, guid: 4bb6068f8d17acc4c8bc7391277e50bc, type: 3}
+--- !u!4 &1558137636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558137634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.4159827, y: 13.522049, z: 1.5905805}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1559823551
 GameObject:
   m_ObjectHideFlags: 0
@@ -121281,6 +121328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 7675155791870136621, guid: f45882929ea7d764ea98a064ca31537e, type: 3}
   _playerSpawnPoint: {fileID: 682362319}
+  _gatewaySystem: {fileID: 1558137635}
   _interactablePrompt: {fileID: 452035729}
 --- !u!1 &1856948133
 GameObject:
