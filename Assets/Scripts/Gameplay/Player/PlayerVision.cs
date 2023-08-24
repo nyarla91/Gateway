@@ -30,7 +30,7 @@ namespace Gameplay.Player
                 return;
             float verticalAngle = _cameraTransform.localRotation.eulerAngles.x;
             verticalAngle -= delta.y;
-            verticalAngle = verticalAngle.ClampAngle(271, 89);
+            verticalAngle = verticalAngle.ClampAngle(270.1f, 89.9f);
             _cameraTransform.localRotation = Quaternion.Euler(_cameraTransform.localRotation.eulerAngles.WithX(verticalAngle));
             Transform.Rotate(0, delta.x, 0);
         }

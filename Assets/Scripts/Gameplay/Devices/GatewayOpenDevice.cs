@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Gameplay.Devices
 {
-    public class GatewayOpenDevice : OutputDevice
+    public class GatewayOpenDevice : InputDeviceWatcher
     {
         [SerializeField] private int _gateway;
         

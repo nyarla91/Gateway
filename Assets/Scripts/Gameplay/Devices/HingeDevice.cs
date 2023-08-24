@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gameplay.Devices
 {
-    public class HingeDevice : OutputDevice
+    public class HingeDevice : InputDeviceWatcher
     {
         [SerializeField] private Vector3 _positionOffset;
         [SerializeField] private Vector3 _angleOffset;
