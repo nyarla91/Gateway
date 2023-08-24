@@ -25,7 +25,7 @@ namespace Extentions
             return Mathf.Lerp(min, max, (sin + 1) * 0.5f);
         }
 
-        public static float Average(float[] numbers)
+        public static float AverageNumber(float[] numbers)
         {
             if (numbers.Length == 0)
                 return 0;

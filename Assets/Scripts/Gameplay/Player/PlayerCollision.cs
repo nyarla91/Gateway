@@ -13,7 +13,8 @@ namespace Gameplay.Player
 
         private Collider Collider => _collider ??= GetComponent<Collider>();
 
-        public float SlopeAngle { get; private set; }
+        public Vector3 Normal { get; private set; }
+        public float SlopeAngle => Vector3.Angle(Normal, Vector3.up);
         public bool DoesCollide { get; private set; }
 
         private void FixedUpdate()
@@ -23,9 +24,8 @@ namespace Gameplay.Player
             {
                 normals.AddRange(collision.contacts.Select(contact => contact.normal));
             }
-            float[] angles = normals.Select(normal => Vector3.Angle(normal, Vector3.up)).ToArray();
-            
-            SlopeAngle = MathExtentions.Average(angles);
+
+            Normal = normals.ToArray().AverageVector().normalized;
             DoesCollide = _currentCollisions.Count > 0;
             
             _currentCollisions = new List<Collision>();

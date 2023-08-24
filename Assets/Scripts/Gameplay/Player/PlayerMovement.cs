@@ -20,6 +20,8 @@ namespace Gameplay.Player
         [SerializeField] [Range(0, 90)] private float _walkSlope;
         [SerializeField] private float _jumpForce;
         [SerializeField] private float _jumpBufferTime;
+        [Space]
+        [SerializeField] private float _maxFallSpeed;
         
         private InputBuffer _jumpBuffer;
 
@@ -44,9 +46,13 @@ namespace Gameplay.Player
                 return;
             if (_movementStates.IsCurrentStateNoneOf(RegularState))
                 return;
-
+            
             Vector3 currentVelocity = Rigidbody.velocity.WithY(0);
-            Vector3 targetVelocity = InputDirectionToWorld * _maxSpeed;
+
+            Vector3 direction = InputDirectionToWorld;
+            if (Collision.SlopeAngle <= _walkSlope)
+                direction = direction - Vector3.Dot(direction, Collision.Normal) * Collision.Normal;
+            Vector3 targetVelocity = direction * _maxSpeed;
             
             float maxVelocityDelta = IsGrounded ? _groundAcceleration : _airAcceleration;
 
@@ -76,6 +82,8 @@ namespace Gameplay.Player
         private void FixedUpdate()
         {
             Move();
+            Vector3 velocity = Rigidbody.velocity;
+            Rigidbody.velocity = velocity.WithY(Mathf.Max(velocity.y, -_maxFallSpeed));
         }
     }
 }

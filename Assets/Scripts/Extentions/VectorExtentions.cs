@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -145,7 +146,7 @@ namespace Extentions
                 ys[i] = vectors[i].y;
                 zs[i] = vectors[i].z;
             }
-            return new Vector3(MathExtentions.Average(xs), MathExtentions.Average(ys), MathExtentions.Average(zs));
+            return new Vector3(MathExtentions.AverageNumber(xs), MathExtentions.AverageNumber(ys), MathExtentions.AverageNumber(zs));
         }
 
         public static Vector2 LerpMulti(this Vector2[] vectors2)
@@ -204,6 +205,20 @@ namespace Extentions
         public static Quaternion ToLookRotation2D(this Vector2 direction)
         {
             return Quaternion.Euler(0, 0, direction.ToDegrees());
+        }
+
+        public static Vector3 AverageVector(this Vector3[] vectors, bool averageMagnitude = false)
+        {
+            float averageX = vectors.Select(vector => vector.x).Average();
+            float averageY = vectors.Select(vector => vector.y).Average();
+            float averageZ = vectors.Select(vector => vector.z).Average();
+
+            Vector3 average = new Vector3(averageX, averageY, averageZ);
+
+            if (averageMagnitude)
+                average.SetMagnitude(vectors.Select(vector => vector.magnitude).Average());
+
+            return average;
         }
     }
 
