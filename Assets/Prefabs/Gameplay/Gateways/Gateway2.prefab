@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: _index
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5470214710129904257, guid: bf560b6b8aa9ced43ab89cc40a239ab9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: da80e6d1cb0bd0b45885bf8b637d2afe, type: 2}
     - target: {fileID: 6346334021621662196, guid: bf560b6b8aa9ced43ab89cc40a239ab9, type: 3}
       propertyPath: m_Name
       value: Gateway2

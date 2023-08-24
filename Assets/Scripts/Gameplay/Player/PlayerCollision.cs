@@ -43,7 +43,6 @@ namespace Gameplay.Player
 
         private void OnCollisionStay(Collision other)
         {
-            print(other.gameObject);
             _currentCollisions.Add(other);
         }
     }

@@ -11,7 +11,7 @@ namespace Gameplay.Devices
         protected bool IsTurnedOn => _inputDevice.IsTurnedOn;
 
         protected abstract void TurnOn();
-        protected abstract void TurnOff();
+        protected virtual void TurnOff() { }
 
         protected virtual void Awake()
         {
