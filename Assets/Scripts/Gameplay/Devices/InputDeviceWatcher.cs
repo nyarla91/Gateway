@@ -8,13 +8,15 @@ namespace Gameplay.Devices
     {
         [SerializeField] private InputDevice _inputDevice;
 
-        protected bool IsTurnedOn => _inputDevice.IsTurnedOn;
+        protected bool IsTurnedOn => _inputDevice != null && _inputDevice.IsTurnedOn;
 
         protected abstract void TurnOn();
         protected virtual void TurnOff() { }
 
         protected virtual void Awake()
         {
+            if (_inputDevice == null)
+                return;
             _inputDevice.TurnedOn += TurnOn;
             _inputDevice.TurnedOff += TurnOff;
         }

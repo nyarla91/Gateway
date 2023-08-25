@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using Extentions;
 using Extentions.Pause;
 using UnityEngine;

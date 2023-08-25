@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Extentions
 {
+    [ExecuteAlways]
     public abstract class Transformable : MonoBehaviour
     {
         private Transform _transform;

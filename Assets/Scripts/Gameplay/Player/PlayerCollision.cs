@@ -25,6 +25,11 @@ namespace Gameplay.Player
                 normals.AddRange(collision.contacts.Select(contact => contact.normal));
             }
 
+            if (normals.Count == 0)
+            {
+                Normal = Vector3.up;
+                return;
+            }
             Normal = normals.ToArray().AverageVector().normalized;
             DoesCollide = _currentCollisions.Count > 0;
             
