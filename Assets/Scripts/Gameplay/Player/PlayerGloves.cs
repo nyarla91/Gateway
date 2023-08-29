@@ -1,5 +1,4 @@
 ﻿using System;
-using Extentions.Factory;
 using Gameplay.Gateways;
 using Gameplay.Surfaces;
 using UnityEngine;
@@ -9,14 +8,19 @@ namespace Gameplay.Player
 {
     public class PlayerGloves : MonoBehaviour
     {
+        [SerializeField] private bool[] _availableGateways = new bool[2];
+        
         private PlayerVision _vision;
 
         public PlayerVision Vision => _vision ??= GetComponent<PlayerVision>();
         
         [Inject] private GatewaySystem GatewaySystem { get; set; }
-
+        
         public void TryOpenGateway(int index)
         {
+            if ( ! _availableGateways[index])
+                return;
+            
             LayerMask mask = LayerMask.GetMask("Obstacle");
             if ( ! Physics.Raycast(Vision.LookRay, out RaycastHit hit, Single.MaxValue, mask))
                 return;

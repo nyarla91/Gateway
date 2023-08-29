@@ -15,10 +15,10 @@ namespace SceneManagement
 
         private bool _loadingScene;
     
-        public void LoadMainMenu() => LoadScene(_mainMenuReference);
-        public void LoadGameplay() => LoadScene(_gameplayReference);
+        public async Task LoadMainMenu() => await LoadScene(_mainMenuReference);
+        public async Task LoadGameplay() => await LoadScene(_gameplayReference);
 
-        private async void LoadScene(AssetReference scene)
+        private async Task LoadScene(AssetReference scene)
         {
             if (_loadingScene)
                 return;

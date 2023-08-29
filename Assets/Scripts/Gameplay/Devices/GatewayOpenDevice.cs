@@ -21,6 +21,12 @@ namespace Gameplay.Devices
             GatewaySystem.CloseGateway(_gateway);
         }
 
+        private void Start()
+        {
+            if (InputDevice == null)
+                TurnOn();
+        }
+
         private void OnValidate()
         {
             _gateway = Mathf.Clamp(_gateway, 0, 1);

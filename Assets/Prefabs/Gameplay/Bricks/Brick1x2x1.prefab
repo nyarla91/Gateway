@@ -143,11 +143,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874201649302332577, guid: 98ddc3c97df7a2a43a216a5db0642294, type: 3}
       propertyPath: m_Size.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8874201649302332577, guid: 98ddc3c97df7a2a43a216a5db0642294, type: 3}
       propertyPath: m_Center.z
-      value: -0.5
+      value: -0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98ddc3c97df7a2a43a216a5db0642294, type: 3}

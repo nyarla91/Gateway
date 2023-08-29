@@ -58,7 +58,7 @@ namespace UI
         private void Awake()
         {
             DeviceWatcher.OnUISchemeChanged += UpdateSelection;
-            DeviceWatcher.OnUISchemeSet += MouseDeselect;
+            DeviceWatcher.OnUISchemeSet += MouseDeselect; 
         }
 
         private void MouseDeselect(UIScheme scheme)

@@ -8,9 +8,6 @@ namespace Gameplay.Entity
     public class StateMachine : MonoBehaviour
     {
         public const string Regular = "Regular";
-        public const string Performing = "Performing";
-        public const string Stun = "Stun";
-        public const string Sprint = "Sprint";
 
         private static Dictionary<TextAsset, List<State>> _generatedMachines = new Dictionary<TextAsset, List<State>>();
         
@@ -25,7 +22,11 @@ namespace Gameplay.Entity
             private set => _currentState = value;
         }
 
-        public State GetState(string stateName) => _states.Find(state => state.Name.Equals(stateName));
+        public State GetState(string stateName)
+        {
+            ValidateState(stateName);
+            return _states.Find(state => state.Name.Equals(stateName));
+        }
 
         public bool TryEnterState(string stateName) => TryEnterState(stateName, false);
         
@@ -36,15 +37,15 @@ namespace Gameplay.Entity
                     "Entering Regular state is frohibited." +
                     "Use TryExitState to enter Regular state from specific state");
             
-            CheckStateForExistance(stateName);
+            ValidateState(stateName);
             State newState = _states.FirstOrDefault(state => state.Name.Equals(stateName));
             if (newState == null || !CurrentState.CanSwitchToState(stateName))
                 return false;
 
             State oldState = CurrentState;
             CurrentState = newState;
-            oldState.OnExit?.Invoke();
-            newState.OnEnter?.Invoke();
+            oldState.Exit?.Invoke();
+            newState.Enter?.Invoke();
             return true;
         }
 
@@ -57,11 +58,11 @@ namespace Gameplay.Entity
 
         public bool IsCurrentState(string stateName)
         {
-            CheckStateForExistance(stateName);
+            ValidateState(stateName);
             return CurrentState.Name.Equals(stateName);
         }
 
-        public bool IsCurrentStateOneOf(string[] stateNames) =>
+        public bool IsCurrentStateOneOf(params string[] stateNames) =>
             stateNames.Any(stateName => CurrentState.Name.Equals(stateName));
 
         public bool IsCurrentStateNoneOf(params string[] statesNames) => !IsCurrentStateOneOf(statesNames);
@@ -74,6 +75,11 @@ namespace Gameplay.Entity
                 _states = _generatedMachines[_stateTable];
             else
                 GeneraleStateList();
+        }
+
+        private void Start()
+        {
+            CurrentState = _states[0];
         }
 
         private void GeneraleStateList()
@@ -90,8 +96,6 @@ namespace Gameplay.Entity
             }
             
             _generatedMachines.Add(_stateTable, _states);
-            
-            CurrentState = _states[0];
         }
 
         private State GenerateState(string[] lines, int y, List<string> stateNames)
@@ -103,15 +107,15 @@ namespace Gameplay.Entity
                 if (currentLine[x][0] == 'F')
                     forbiddenTransitions.Add(stateNames[x - 1]);
             }
-            State state = new State(currentLine[0], forbiddenTransitions);
+            State state = new State(y, currentLine[0], forbiddenTransitions);
 
             return state;
         }
 
-        private void CheckStateForExistance(string stateName)
+        private void ValidateState(string stateName)
         {
-            if (!_states.Any(state => state.Name.Equals(stateName)))
-                throw new Exception($"{gameObject.name} has no {stateName} state");
+            if ( ! _states.Any(state => state.Name.Equals(stateName)))
+                throw new Exception($"{gameObject} has no {stateName} state");
         }
     }
 
@@ -119,7 +123,10 @@ namespace Gameplay.Entity
     public class State
     {
         [SerializeField] private string _name;
+        [SerializeField] private int _id;
         [SerializeField] private List<string> _forbiddenTransitions;
+
+        public int ID => _id;
 
         public string Name
         {
@@ -127,11 +134,12 @@ namespace Gameplay.Entity
             set => _name = value;
         }
 
-        public Action OnEnter;
-        public Action OnExit;
+        public Action Enter;
+        public Action Exit;
 
-        public State(string name, List<string> frobiddenTransitions)
+        public State(int id, string name, List<string> frobiddenTransitions)
         {
+            _id = id;
             Name = name;
             _forbiddenTransitions = frobiddenTransitions;
         }

@@ -78,3 +78,5 @@ MonoBehaviour:
   _deviceWatcherPrefab: {fileID: 3791251603371342818, guid: 8f3ac5f372f9ff944989672dc57bb6a1, type: 3}
   _settingsPrefab: {fileID: 8448436274929121053, guid: 3b4f84cf139402c408971561bd1a2df1, type: 3}
   _pausePrefab: {fileID: 1410524774520128992, guid: b460af593ff83ce47a81e39c0269d812, type: 3}
+  _locationsLibraryPrefab: {fileID: 6519249839244724479, guid: 5543d1e39616e984782aadbb1b464ffe, type: 3}
+  _gameSavePrefab: {fileID: 3547441203203728867, guid: 422b4d00d5629ad469c559c05e580184, type: 3}

@@ -16,11 +16,12 @@ namespace Gameplay.Player
         
         private void Awake()
         {
+            print("AWAWA");
             _controls.JumpPressed += _movement.TryJump;
             _controls.InteractPressed += _interaction.TryInteract;
             _controls.GatewayPressed += _gloves.TryOpenGateway;
-            _movement.MovementInputBind += () => _controls.MovementDelta;
-            _vision.CameraRotationBind += () => _controls.CameraDelta;
+            _movement.MovementInputBind += _controls.GetMovementDelta;
+            _vision.CameraRotationBind += _controls.GetCameraDelta;
             InteractablePrompt.TargetBind += () => _interaction.Target;
             InteractablePrompt.InteractableScreenPosition += _interaction.InteractableScreenPosition;
         }

@@ -18,15 +18,15 @@ MonoBehaviour:
   m_GUID: fc99ffbb33a284344b58287a19ed1446
   m_SerializeEntries:
   - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
-    m_Address: Scene/MainMenu
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a97ae7540f6ab9349b14e8bc69ecef05
-    m_Address: Scene/Loading
+    m_Address: Assets/Scenes/MainMenu.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: c547021adc022f7499ad2a7d0c096379
-    m_Address: Scene/Gameplay
+    m_Address: Assets/Scenes/Gameplay.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a97ae7540f6ab9349b14e8bc69ecef05
+    m_Address: Assets/Scenes/Loading.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
